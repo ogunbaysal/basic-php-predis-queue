@@ -1,5 +1,6 @@
 <?php
-class MailerTask extends Task {
+
+class MailerTask extends BasicPhpPredisQueue\Task {
     private string $template = '';
     private string $email = '';
     private string $subject = '';

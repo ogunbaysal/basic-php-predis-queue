@@ -1,4 +1,5 @@
 <?php
+namespace BasicPhpPredisQueue;
 
 abstract class Task {
     public abstract function action();
@@ -6,10 +7,10 @@ abstract class Task {
     public abstract function toArray() : array;
 }
 
-class SimpleQueue {
-    private Predis\Client $client;
+class Queue {
+    private \Predis\Client $client;
     private string $queue_name = 'queue';
-    public function __construct(Predis\Client $client, ?string $queue_name = null) {
+    public function __construct(\Predis\Client $client, ?string $queue_name = null) {
         $this->client = $client;
         if ($queue_name !== null) {
             $this->queue_name = $queue_name;
@@ -33,11 +34,11 @@ class SimpleQueue {
     }
 }
 
-class QueueWorker {
+class Worker {
     private const INFO = 'INFO';
     private const WARNING = 'WARNING';
-    private SimpleQueue $queue;
-    public function __construct(SimpleQueue $queue)
+    private Queue $queue;
+    public function __construct(Queue $queue)
     {
         $this->queue = $queue;
         $this->log(self::INFO, 'Queue is initialized.');

@@ -1,13 +1,14 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/BasicPhpQueue.php';
+require __DIR__ . '/vendor/predis/predis/autoload.php';
+Predis\Autoloader::register();
+
+require_once __DIR__ . '/../BasicPhpQueue.php';
 require_once __DIR__ . '/tasks.php';
 
 $client = new Predis\Client();
 $client->connect();
 
-$queue = new SimpleQueue($client);
-
+$queue = new BasicPhpPredisQueue\Queue($client);
 
 $task = new MailerTask();
 $task->fromArray([
