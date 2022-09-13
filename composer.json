@@ -1,0 +1,12 @@
+{
+    "name": "ogunbaysal/basic-php-queue",
+    "authors": [
+        {
+            "name": "Ogün Baysal",
+            "email": "ogunbaysaltr@gmail.com"
+        }
+    ],
+    "require": {
+        "predis/predis": "^2.0"
+    }
+}
