@@ -20,4 +20,5 @@ $task->fromArray([
         'surname' => 'Baysal',
     ],
 ]);
+
 $queue->enqueue($task);

@@ -23,14 +23,4 @@ class MailerTask extends BasicPhpPredisQueue\Task {
         $this->subject = $array['subject'];
         $this->data = $array['data'];
     }
-
-    public function toArray(): array
-    {
-        return [
-            'template' => $this->template,
-            'email' => $this->email,
-            'subject' => $this->subject,
-            'data' => $this->data,
-        ];
-    }
 }
